@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from schemas.product import ProductCreate, ProductUpdate, ProductResponse
-from database import session, engine
+from config.database import session, engine
 import models.product as product_model
 from sqlalchemy.orm import Session
 
