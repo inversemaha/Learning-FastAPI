@@ -1,18 +1,24 @@
 from pydantic import BaseModel
-from typing import List, Optional
-from schemas.product import Product
+from typing import List, Optional, TYPE_CHECKING
 
+# TYPE_CHECKING prevents circular imports during runtime
+if TYPE_CHECKING:
+    from schemas.product import ProductResponse
 
 class CategoryBase(BaseModel):
     name: str
 
-class CategoryCreate(BaseModel):    
+class CategoryCreate(CategoryBase):    
     """Used for POST request Validation."""
     pass
 
-class Category(CategoryBase):
+class CategoryResponse(CategoryBase):
     id: int
-    product: List["Product"] = [] # forward referance
+    products: List["ProductResponse"] = [] # forward reference - matches model attribute name
 
     class Config:
         orm_mode = True
+
+class MessageResponse(BaseModel):
+    """Used for sending dict msg to the client."""
+    message: str
