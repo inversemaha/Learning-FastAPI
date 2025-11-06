@@ -1,3 +1,13 @@
+# Frontend specific (Node.js files only in frontend folder)
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.npm
+frontend/.eslintcache
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

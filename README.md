@@ -26,6 +26,36 @@ app/
 
 ---
 
+## ⚙️ Backend Configuration
+
+### CORS Middleware Setup
+
+To enable frontend-backend communication, add CORS middleware in `main.py`:
+
+```python
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # React default port
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["*"],
+)
+```
+
+**CORS Configuration Options:**
+- `allow_origins`: Frontend URL (React runs on port 3000 by default)
+- `allow_credentials`: Enable cookies/authentication
+- `allow_methods`: HTTP methods your API supports
+- `allow_headers`: Headers allowed in requests
+
+---
+
 ## 📚 Day 1 Learning Plan (001)
 
 Today, I have learned:
@@ -79,11 +109,22 @@ Next steps include **React.js frontend** integration:
 * Display API data dynamically using React state and components
 * Optional: Add Axios for API requests
 
-**Proposed folder structure:**
+**Frontend folder structure:**
 
 ```
 frontend/
-
+├── public/
+│   ├── index.html
+│   └── favicon.ico
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+├── package.json
+├── package-lock.json
 ```
 
 ---

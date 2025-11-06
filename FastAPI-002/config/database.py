@@ -1,5 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 db_url = "postgresql://postgres:1@localhost:5432/mahaFastAPI"
 engine = create_engine(db_url)
